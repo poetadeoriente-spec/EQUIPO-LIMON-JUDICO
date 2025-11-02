@@ -28,7 +28,6 @@ let puntos = [0, 0];
 let bloqueado = false;
 
 function iniciarJuego() {
-    // Duplicar y mezclar términos
     cartas = [...terminos, ...terminos]
         .sort(() => Math.random() - 0.5)
         .map((termino, index) => ({
@@ -81,7 +80,6 @@ function verificarPar() {
     const [carta1, carta2] = cartasVolteadas;
     
     if (carta1.termino === carta2.termino) {
-        // Par encontrado
         carta1.encontrada = true;
         carta2.encontrada = true;
         puntos[jugadorActual - 1]++;
@@ -92,7 +90,6 @@ function verificarPar() {
             verificarFinJuego();
         }, 1000);
     } else {
-        // No es par
         setTimeout(() => {
             carta1.volteada = false;
             carta2.volteada = false;
@@ -113,7 +110,6 @@ function actualizarMarcador() {
     document.getElementById('player2').innerHTML = `JUGADOR 2: ⭐ <span>${puntos[1]}</span>`;
     document.getElementById('turno').textContent = `TURNO: JUGADOR ${jugadorActual}`;
     
-    // Resaltar jugador activo
     document.getElementById('player1').classList.toggle('active', jugadorActual === 1);
     document.getElementById('player2').classList.toggle('active', jugadorActual === 2);
 }
@@ -125,7 +121,7 @@ function verificarFinJuego() {
             if (ganador === 0) {
                 alert('¡EMPATE! 🎉\n\nDesarrollado por Equipo Limón 🍋');
             } else {
-                alert(`¡JUGADOR ${ganador} GANA! 🏆\n\nDesarrollado por Equipo Limón 🍋`);
+                alert(`¡JUGADOR ${ganador} GANA! 🏆\n\nDesarrollado por Equipo Limón 🍋');
             }
         }, 500);
     }
@@ -142,5 +138,4 @@ function mostrarMenu() {
     alert('🎴 MEMORAMA JURÍDICO\n\n20 pares de términos jurídicos\n2 jugadores por turnos\n\nDesarrollado por Equipo Limón 🍋');
 }
 
-// Iniciar juego cuando se carga la página
 document.addEventListener('DOMContentLoaded', iniciarJuego);
